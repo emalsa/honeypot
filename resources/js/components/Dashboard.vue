@@ -1,6 +1,6 @@
 <template>
   <section class="py-10 bg-gray-900 overflow-hidden">
-    <div class="container mx-auto px-4">
+<!--    <div class="container mx-auto px-4">-->
       <div class="py-20 px-8 bg-gray-900 border border-gray-800 rounded-3xl">
         <div class="pb-32 md:pb-64 max-w-7xl mx-auto">
           <div class="md:max-w-md mx-auto text-center">
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-    </div>
+<!--    </div>-->
   </section>
 
 </template>

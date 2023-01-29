@@ -1,9 +1,4 @@
 <template>
-  <section class="pt-6 pb-20 bg-gray-900 overflow-hidden">
-    <div class="container mx-auto px-4">
-      <Navigation/>
-    </div>
-  </section>
   <section class="py-10 bg-gray-900 overflow-hidden">
     <div class="container mx-auto px-4">
       <div class="py-16 px-8 bg-gray-900 overflow-hidden border border-gray-800 rounded-3xl">

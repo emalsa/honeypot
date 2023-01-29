@@ -1,6 +1,6 @@
 <template>
-  <section id="how-it-works" class="py-16 bg-gray-900 overflow-hidden">
-    <div class="container mx-auto px-4">
+  <section  class="py-16 bg-gray-900 overflow-hidden">
+    <div id="how-it-works" class="container mx-auto px-4">
       <div class="flex flex-wrap lg:items-center -m-8">
         <div class="w-full md:w-1/2 p-8">
           <div class="md:max-w-md">

@@ -1,15 +1,8 @@
 <template>
-  <section class="pt-6 pb-20 bg-gray-900 overflow-hidden">
-    <div class="container mx-auto px-4">
-      <Navigation />
-      <Hero />
-    </div>
-  </section>
-  <HowItWorks />
-  <About />
-  <Footer />
+  <Hero/>
+  <HowItWorks/>
+  <About/>
 </template>
-
 
 <script>
 import Navigation from "./Navigation.vue";
@@ -24,6 +17,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
