@@ -4,20 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
 class MemberController extends Controller {
 
-  public function getMember(Request $request) {
-    if (0) {
-      return response()->json(['status' => 'ok', 'redirect' => '/dashboard']);
-    }
-    else {
-      // Error
-      return response()->json(['status' => 'error', 'message' => 'Username or password incorrect']);
-    }
+  public function getMember(Request $request): JsonResponse {
+    try {
+      $username = $request->get('username');
+      $password = $request->get('password');
+      $response = Http::post('http://honeypot_backend.lndo.site/api/test?XDEBUG_SESSION_START=PHPSTORM', [
+        'username' => $username,
+        'password' => $password,
+      ]);
 
+      if ($response->status() !== 200) {
+        throw new \Exception('Status code not 200');
+      }
+
+      $responseData = $response->json();
+      if ($responseData['status'] === 'ok') {
+        return response()->json(['status' => $responseData['status'], 'redirect' => $responseData['redirect']]);
+      }
+
+      return response()->json(['status' => 'error', 'message' => 'Username or Password incorrect.']);
+    }
+    catch (\Error|\Exception $exception) {
+      return response()->json(['status' => 'error', 'message' => 'Something went wrong.']);
+    }
 
   }
 

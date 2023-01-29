@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('members', 'App\Http\Controllers\MemberController@getMember');
 
 Route::get('/', function () {
   return view('index');

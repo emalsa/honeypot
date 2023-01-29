@@ -61,7 +61,8 @@
                 <div class="w-full p-3">
                   <label class="block mb-2 text-sm text-gray-400 font-bold"
                          for="signInDarkBorderInput1-1">Username</label>
-                  <input class="appearance-none px-6 py-3.5 w-full text-lg text-gray-500 font-bold bg-gray-800 placeholder-gray-500 outline-none border border-gray-700 focus:ring-4 focus:ring-blue-200 rounded-full"
+                  <input v-model="username"
+                         class="appearance-none px-6 py-3.5 w-full text-lg text-gray-500 font-bold bg-gray-800 placeholder-gray-500 outline-none border border-gray-700 focus:ring-4 focus:ring-blue-200 rounded-full"
                          id="signInDarkBorderInput1-1"
                          type="text"
                          placeholder="Username">
@@ -69,7 +70,8 @@
                 <div class="w-full p-3">
                   <label class="block mb-2 text-sm text-gray-400 font-bold"
                          for="signInDarkBorderInput1-2">Password</label>
-                  <input class="appearance-none px-6 py-3.5 w-full text-lg text-gray-500 font-bold bg-gray-800 placeholder-gray-500 outline-none border border-gray-700 focus:ring-4 focus:ring-blue-200 rounded-full"
+                  <input v-model="password"
+                         class="appearance-none px-6 py-3.5 w-full text-lg text-gray-500 font-bold bg-gray-800 placeholder-gray-500 outline-none border border-gray-700 focus:ring-4 focus:ring-blue-200 rounded-full"
                          id="signInDarkBorderInput1-2"
                          type="password"
                          placeholder="*************">
@@ -104,7 +106,7 @@
                               class="block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full">
                         Log In
                       </button>
-                      <div v-if="errored" class="bg-white">heelo</div>
+                      <div v-if="errored" class="bg-white">{{ message }}</div>
                     </div>
                   </div>
                 </div>
@@ -136,14 +138,25 @@ export default {
       members: [],
       message: String,
       errored: false,
-
+      username: '',
+      password: ''
     }
   },
   methods: {
     async login() {
       this.errored = false
+      if (this.username === '') {
+        this.errored = true
+        this.message = 'Username required.'
+        return
+      }
+      if (!this.password) {
+        this.errored = true
+        this.message = 'Password required.'
+        return;
+      }
       axios
-          .post('./members', {'test': 'wow', 'he': 0})
+          .post('/api/member-login', {'username': this.username, 'password': this.password})
           .then(response => {
             this.members = response.data
             if (this.members && this.members.redirect && this.members.status === 'ok') {
@@ -162,9 +175,5 @@ export default {
 
     }
   },
-  mounted() {
-    // this.loadUsers();
-
-  }
 }
 </script>
