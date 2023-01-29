@@ -4,7 +4,7 @@
       <div class="w-auto">
         <div class="flex flex-wrap items-center">
           <div class="w-auto">
-            <router-link to="/home">
+            <router-link to="/">
               <img src="zanrly-assets/logos/zanrly-logo-white.svg" alt=""></router-link>
           </div>
         </div>
@@ -15,7 +15,7 @@
             <ul class="flex items-center justify-center">
               <li class="mr-9">
                 <router-link class="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
-                             to="/home"
+                             to="/"
                              contenteditable="false">Home
                 </router-link>
               </li>
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="w-auto lg:hidden">
-            <router-link class="inline-block" to="/home">
+            <router-link class="inline-block" to="#">
               <svg class="navbar-burger text-blue-500"
                    width="45"
                    height="45"
@@ -84,11 +84,11 @@
           <div class="w-full">
             <div class="flex items-center justify-between -m-2">
               <div class="w-auto p-2">
-                <router-link class="inline-block" to="/home">
-                  <img src="zanrly-assets/logos/zanrly-logo-white.svg" alt=""></router-link>
+                <a class="inline-block" href="#">
+                  <img src="zanrly-assets/logos/zanrly-logo-white.svg" alt=""></a>
               </div>
               <div class="w-auto p-2">
-                <router-link class="inline-block navbar-burger" to="/home">
+                <a class="inline-block navbar-burger" href="#">
                   <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 18L18 6M6 6L18 18"
                           stroke="#ffffff"
@@ -96,14 +96,14 @@
                           stroke-linecap="round"
                           stroke-linejoin="round"></path>
                   </svg>
-                </router-link>
+                </a>
               </div>
             </div>
           </div>
           <div class="flex flex-col justify-center py-8 w-full">
             <ul>
               <li class="mb-9">
-                <router-link class="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" to="/home">Home
+                <router-link class="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" to="/">Home
                 </router-link>
               </li>
               <li class="mb-9">

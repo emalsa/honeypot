@@ -10,7 +10,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<!--    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/js/main.js])-->
+    @vite(['resources/js/app.js', 'resources/css/app.css','resources/js/main.js'])
+    <!--    <script src="/resources/js/main.js">-->
 </head>
 <body class="antialiased bg-body text-body font-body">
 <div id="app"></div>
