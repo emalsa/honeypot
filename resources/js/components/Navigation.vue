@@ -59,19 +59,21 @@
           </div>
           <div class="w-auto lg:hidden">
             <router-link class="inline-block" to="#">
-              <svg class="navbar-burger text-blue-500"
-                   width="45"
-                   height="45"
-                   viewbox="0 0 56 56"
-                   fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                <rect width="56" height="56" rx="28" fill="currentColor"></rect>
-                <path d="M37 32H19M37 24H19"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"></path>
-              </svg>
+              <div>
+                <svg class="navbar-burger text-blue-500"
+                     width="45"
+                     height="45"
+                     viewbox="0 0 56 56"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <rect width="56" height="56" rx="28" fill="currentColor"></rect>
+                  <path d="M37 32H19M37 24H19"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+              </div>
             </router-link>
           </div>
         </div>
