@@ -4,9 +4,9 @@
       <div class="p-10 bg-gray-900 border border-gray-800 rounded-3xl">
         <div class="flex flex-wrap md:items-center -m-8">
           <div class="w-full md:w-1/2 p-8">
-            <div class="py-20 px-8 lg:px-20 bg-gray-800 rounded-3xl">
+            <div class="py-14 px-8 lg:px-20 bg-gray-800 rounded-3xl">
               <img class="mb-20 md:mb-40" src="zanrly-assets/logos/zanrly-logo-xl-white.svg" alt="">
-              <h2 class="font-heading mb-20 md:mb-40 text-4xl md:text-5xl text-white font-black"
+              <h2 class="font-heading mb-18 md:mb-30 text-4xl md:text-5xl text-white font-black"
                   contenteditable="false">Welcome back. Hope you are fine.</h2>
               <ul class="max-w-xs">
                 <h3 class="font-heading mb-6 text-xl text-gray-500 font-bold">THINKING CRYPTO WALLETS</h3>
