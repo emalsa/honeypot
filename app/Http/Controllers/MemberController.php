@@ -38,7 +38,7 @@ class MemberController extends Controller {
       $password = $request->get('password');
       $data = $request->get('data');
       // With XDebug add: ?XDEBUG_SESSION_START=PHPSTORM
-      $response = Http::post($backendUrl . '?XDEBUG_SESSION_START=PHPSTORM', [
+      $response = Http::post($backendUrl, [
         'username' => $username,
         'password' => $password,
         'data' => $data,
