@@ -3,19 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Redirect;
 
 class MemberController extends Controller {
 
+  /**
+   * The production url to the backend.
+   *
+   * @var string
+   */
+  public const PRODUCTION_BACKEND = 'https://honeypot-backend.nicastro.io/api/get-member';
+
+  /**
+   * The local url to the backend.
+   *
+   * @var string
+   */
+  public const LOCAL_BACKEND = 'https://honeypot-backend.localhost/api/get-member';
+
+  /**
+   * Call Backend and return ok/not ok.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function getMember(Request $request): JsonResponse {
     try {
+      $backendUrl = getenv('LANDO_SERVICE_NAME') ? self::LOCAL_BACKEND : self::PRODUCTION_BACKEND;
+
       $username = $request->get('username');
       $password = $request->get('password');
-      $response = Http::post('http://honeypot_backend.lndo.site/api/test?XDEBUG_SESSION_START=PHPSTORM', [
+      // With XDebug add: ?XDEBUG_SESSION_START=PHPSTORM
+      $response = Http::post($backendUrl, [
         'username' => $username,
         'password' => $password,
       ]);
@@ -25,11 +47,11 @@ class MemberController extends Controller {
       }
 
       $responseData = $response->json();
-      if ($responseData['status'] === 'ok') {
+      if ($responseData['status'] == 'ok') {
         return response()->json(['status' => $responseData['status'], 'redirect' => $responseData['redirect']]);
       }
 
-      return response()->json(['status' => 'error', 'message' => 'Username or Password incorrect.']);
+      return response()->json(['status' => 'error', 'message' => 'Username or Password incorrect.' . $response->body()]);
     }
     catch (\Error|\Exception $exception) {
       return response()->json(['status' => 'error', 'message' => 'Something went wrong.']);
