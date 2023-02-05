@@ -50,8 +50,6 @@ class MemberController extends Controller {
       }
 
       $responseData = $response->json();
-      return response()->json($responseData);
-
       if ($responseData['status'] == 'ok') {
         return response()->json(['status' => $responseData['status'], 'redirect' => $responseData['redirect']]);
       }
