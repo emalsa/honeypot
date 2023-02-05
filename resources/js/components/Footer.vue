@@ -28,14 +28,14 @@
             </li>
             <li class="inline-flex p-6">
               <router-link class="inline-block text-gray-500 hover:text-gray-600 font-bold"
-                           to="/terms-and-rights">Terms and Rights
+                           to="/terms-and-rights-new">Terms and Rights
               </router-link>
             </li>
 
           </ul>
           <p class="text-gray-500 text-center font-bold">
             <span>Ⓒ {{ year }} Copyright. All rights reserved by</span>
-            <router-link class="text-blue-500 hover:text-blue-600" to="/terms-and-rights">&nbsp;Zanrly</router-link>
+            <router-link class="text-blue-500 hover:text-blue-600" to="/terms-and-rights-new">&nbsp;bitcoin-holder.org</router-link>
           </p>
         </div>
       </div>
