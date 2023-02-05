@@ -58,9 +58,10 @@
             </div>
           </div>
           <div class="w-auto lg:hidden">
-            <router-link class="inline-block" to="#">
+            <router-link class="inline-block mobile-menu-icon" to="#">
               <div>
-                <svg class="navbar-burger text-blue-500"
+
+                <svg style="overflow:visible;" class="navbar-burger text-blue-500"
                      width="45"
                      height="45"
                      viewbox="0 0 56 56"
@@ -73,8 +74,10 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"></path>
                 </svg>
+
               </div>
             </router-link>
+
           </div>
         </div>
       </div>
