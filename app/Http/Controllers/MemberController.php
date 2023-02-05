@@ -21,7 +21,7 @@ class MemberController extends Controller {
    *
    * @var string
    */
-  public const LOCAL_BACKEND = 'https://honeypot-backend.localhost/api/get-member';
+  public const LOCAL_BACKEND = 'appserver.honeypotbackend.internal/api/get-member';
 
   /**
    * Call Backend and return ok/not ok.
@@ -36,17 +36,22 @@ class MemberController extends Controller {
 
       $username = $request->get('username');
       $password = $request->get('password');
+      $data = $request->get('data');
       // With XDebug add: ?XDEBUG_SESSION_START=PHPSTORM
-      $response = Http::post($backendUrl, [
+      $response = Http::post($backendUrl . '?XDEBUG_SESSION_START=PHPSTORM', [
         'username' => $username,
         'password' => $password,
+        'data' => $data,
       ]);
+
 
       if ($response->status() !== 200) {
         throw new \Exception('Status code not 200');
       }
 
       $responseData = $response->json();
+      return response()->json($responseData);
+
       if ($responseData['status'] == 'ok') {
         return response()->json(['status' => $responseData['status'], 'redirect' => $responseData['redirect']]);
       }

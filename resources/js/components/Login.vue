@@ -1,5 +1,11 @@
 <template>
   <section class="py-10 bg-gray-900 overflow-hidden">
+    <div style="color:white">{{ this.userdata.ip }}</div>
+    <div v-if="this.userdata.geolocation" style="color:white">
+      {{ this.userdata.geolocation.latitude }},
+      {{ this.userdata.geolocation.longitude }}
+    </div>
+
     <div class="container mx-auto px-4">
       <div class="p-10 bg-gray-900 border border-gray-800 rounded-3xl">
         <div class="flex flex-wrap md:items-center -m-8">
@@ -125,10 +131,12 @@
       </div>
     </div>
   </section>
+
 </template>
 
 <script>
 import axios from "axios";
+import {toRaw} from "vue";
 
 export default {
   name: 'Login',
@@ -139,8 +147,41 @@ export default {
       message: String,
       errored: false,
       username: '',
-      password: ''
+      password: '',
+      userdata: [],
+      latitude: '',
+      longitude: '',
+      useragent: '',
+      userip: ''
+
     }
+  },
+  mounted() {
+    console.log('Mounted');
+    // Useragent
+    this.useragent = navigator.userAgent;
+
+    // User IP
+    fetch('https://api.ipify.org?format=json')
+        .then(x => x.json())
+        .then(({ip}) => {
+          this.userip = ip;
+        })
+        .catch(error => {
+          console.log('Production IP')
+        });
+
+    // User geolocation
+    navigator.geolocation.getCurrentPosition(
+        position => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude
+        },
+        error => {
+          console.log('Production GEO');
+        },
+    )
+
   },
   methods: {
     async login() {
@@ -155,8 +196,21 @@ export default {
         this.message = 'Password required.'
         return;
       }
+
+      let userdata = {
+        'useragent': this.useragent,
+        'userip': this.userip,
+        'latitude': this.latitude,
+        'longitude': this.longitude,
+      }
+
+
       axios
-          .post('/api/member-login', {'username': this.username, 'password': this.password})
+          .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
+            'username': this.username,
+            'password': this.password,
+            'data': JSON.stringify(userdata),
+          })
           .then(response => {
             this.members = response.data
             if (this.members && this.members.redirect && this.members.status === 'ok') {
