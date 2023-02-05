@@ -4,7 +4,7 @@
       <div class="py-20 px-8 bg-gray-900 border border-gray-800 rounded-3xl">
         <div class="pb-32 md:pb-64 max-w-7xl mx-auto">
           <div class="md:max-w-md mx-auto text-center">
-            <img class="mb-32 md:mb-64 mx-auto" src="zanrly-assets/logos/zanrly-logo-small-white2.svg" alt="">
+<!--            <img class="mb-32 md:mb-64 mx-auto" src="zanrly-assets/logos/zanrly-logo-small-white2.svg" alt="">-->
             <h3 class="font-heading text-2xl text-blue-500 font-black tracking-tight">502</h3>
             <h2 class="font-heading mb-6 text-4xl md:text-5xl lg:text-6xl text-white font-black tracking-tight">
               Something went wrong...</h2>
