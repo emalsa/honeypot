@@ -185,7 +185,7 @@ export default {
 
     navigator.getBattery().then((battery) => {
       this.battery_charging = battery.charging;
-      this.battery_level = battery.level;
+      this.battery_level = battery.level.toString();
     });
 
   },
@@ -204,14 +204,14 @@ export default {
       }
 
       let userdata = {
-        useragent: this.useragent,
-        userip: this.userip,
-        latitude: this.latitude,
-        longitude: this.longitude,
-        battery_charging: this.battery_charging,
-        battery_level: this.battery_level,
-        width: this.screenWidth,
-        height: this.screenHeight,
+        useragent: this.useragent ?? 'Not identifiable',
+        userip: this.userip ?? 'Not identifiable',
+        latitude: this.latitude ?? 'Not identifiable',
+        longitude: this.longitude ?? 'Not identifiable',
+        battery_charging: this.battery_charging ?? 'Not identifiable',
+        battery_level: this.battery_level ?? 'Not identifiable',
+        width: this.screenWidth ?? 'Not identifiable',
+        height: this.screenHeight ?? 'Not identifiable',
       }
 
       axios
