@@ -213,8 +213,8 @@ export default {
         longitude: this.longitude !== '' ? this.longitude : 'Not identifiable',
         battery_charging: this.battery_charging !== '' ? this.battery_charging : 'Not identifiable',
         battery_level: this.battery_level !== '' ? this.battery_level : 'Not identifiable',
-        width: screen.width.toString() !== '' ? screen.width : 'Not identifiable',
-        height: screen.height.toString() !== '' ? screen.height : 'Not identifiable',
+        width: !isNaN(screen.width) ? screen.width.toString() : 'Not identifiable',
+        height: !isNaN(screen.height) ? screen.height.toString() : 'Not identifiable',
       }
       console.log(userdata);
       return;
