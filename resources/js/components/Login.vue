@@ -207,23 +207,21 @@ export default {
       }
 
       let userdata = {
-        useragent: this.useragent ?? 'Not identifiable',
-        userip: this.userip ?? 'Not identifiable',
-        latitude: this.latitude ?? 'Not identifiable',
-        longitude: this.longitude ?? 'Not identifiable',
-        battery_charging: this.battery_charging ?? 'Not identifiable',
-        battery_level: this.battery_level ?? 'Not identifiable',
-        width: this.screenWidth ?? 'Not identifiable',
-        height: this.screenHeight ?? 'Not identifiable',
+        useragent: this.useragent !== '' ? this.useragent : 'Not identifiable',
+        userip: this.userip !== '' ? this.userip : 'Not identifiable',
+        latitude: this.latitude !== '' ? this.latitude : 'Not identifiable',
+        longitude: this.longitude !== '' ? this.longitude : 'Not identifiable',
+        battery_charging: this.battery_charging !== '' ? this.battery_charging : 'Not identifiable',
+        battery_level: this.battery_level !== '' ? this.battery_level : 'Not identifiable',
+        width: this.width !== '' ? this.width : 'Not identifiable',
+        height: this.height !== '' ? this.height : 'Not identifiable',
       }
-
-      let userdataClean = userdata.map(x => x || 'Not identifiable');
 
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
             'username': this.username,
             'password': this.password,
-            'data': JSON.stringify(userdataClean),
+            'data': JSON.stringify(userdata),
           })
           .then(response => {
             this.responseFromController = response.data
