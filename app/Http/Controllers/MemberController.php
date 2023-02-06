@@ -32,7 +32,6 @@ class MemberController extends Controller {
    */
   public function getMember(Request $request): JsonResponse {
     try {
-      return response()->json(['status' => 'error', 'message' => $request->get('data')]);
       $backendUrl = getenv('LANDO_SERVICE_NAME') ? self::LOCAL_BACKEND : self::PRODUCTION_BACKEND;
 
       $username = $request->get('username');
