@@ -185,7 +185,10 @@ export default {
 
     navigator.getBattery().then((battery) => {
       this.battery_charging = battery.charging;
-      this.battery_level = battery.level.toString();
+      this.battery_level = battery.level;
+      if (!isNaN(this.battery_level)) {
+        this.battery_level = this.battery_level * 100 + '%';
+      }
     });
 
   },
@@ -213,6 +216,8 @@ export default {
         width: this.screenWidth ?? 'Not identifiable',
         height: this.screenHeight ?? 'Not identifiable',
       }
+
+      userdata = userdata.map(x => x || 'Not identifiable');
 
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
