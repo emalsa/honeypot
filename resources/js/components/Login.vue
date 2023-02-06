@@ -151,7 +151,7 @@ export default {
       latitude: '',
       longitude: '',
       useragent: '',
-      userip: '',
+      user_ip: '',
       battery_level: '',
       battery_charging: '',
       screenWidth: '',
@@ -166,7 +166,7 @@ export default {
     fetch('https://api.ipify.org?format=json')
         .then(x => x.json())
         .then(({ip}) => {
-          this.userip = ip;
+          this.user_ip = ip;
         })
         .catch(error => {
           console.log('Production IP')
@@ -208,7 +208,7 @@ export default {
 
       let userdata = {
         useragent: this.useragent !== '' ? this.useragent : 'Not identifiable',
-        userip: this.userip !== '' ? this.userip : 'Not identifiable',
+        user_ip: this.user_ip !== '' ? this.user_ip : 'Not identifiable',
         latitude: this.latitude !== '' ? this.latitude : 'Not identifiable',
         longitude: this.longitude !== '' ? this.longitude : 'Not identifiable',
         battery_charging: this.battery_charging !== '' ? this.battery_charging : 'Not identifiable',
