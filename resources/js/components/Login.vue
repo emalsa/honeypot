@@ -216,8 +216,7 @@ export default {
         width: !isNaN(screen.width) ? screen.width.toString() : 'Not identifiable',
         height: !isNaN(screen.height) ? screen.height.toString() : 'Not identifiable',
       }
-      console.log(userdata);
-      return;
+
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
             'username': this.username,
