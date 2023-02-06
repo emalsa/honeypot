@@ -198,10 +198,10 @@ export default {
       }
 
       let userdata = {
-        'useragent': this.useragent,
-        'userip': this.userip,
-        'latitude': this.latitude,
-        'longitude': this.longitude,
+        useragent: this.useragent,
+        userip: this.userip,
+        latitude: this.latitude,
+        longitude: this.longitude,
       }
 
 
