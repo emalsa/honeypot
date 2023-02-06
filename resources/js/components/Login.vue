@@ -154,8 +154,8 @@ export default {
       userip: '',
       battery_level: '',
       battery_charging: '',
-      screenWidth: screen.width,
-      screenHeight: screen.height
+      screenWidth: '',
+      screenHeight: ''
     }
   },
   mounted() {
@@ -213,10 +213,11 @@ export default {
         longitude: this.longitude !== '' ? this.longitude : 'Not identifiable',
         battery_charging: this.battery_charging !== '' ? this.battery_charging : 'Not identifiable',
         battery_level: this.battery_level !== '' ? this.battery_level : 'Not identifiable',
-        width: this.width !== '' ? this.width : 'Not identifiable',
-        height: this.height !== '' ? this.height : 'Not identifiable',
+        width: screen.width.toString() !== '' ? screen.width : 'Not identifiable',
+        height: screen.height.toString() !== '' ? screen.height : 'Not identifiable',
       }
-
+      console.log(userdata);
+      return;
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
             'username': this.username,
