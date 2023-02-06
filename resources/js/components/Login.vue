@@ -136,14 +136,13 @@
 
 <script>
 import axios from "axios";
-import {toRaw} from "vue";
 
 export default {
   name: 'Login',
 
   data() {
     return {
-      members: [],
+      responseFromController: [],
       message: String,
       errored: false,
       username: '',
@@ -152,12 +151,14 @@ export default {
       latitude: '',
       longitude: '',
       useragent: '',
-      userip: ''
-
+      userip: '',
+      battery_level: '',
+      battery_charging: '',
+      screenWidth: screen.width,
+      screenHeight: screen.height
     }
   },
   mounted() {
-    console.log('Mounted');
     // Useragent
     this.useragent = navigator.userAgent;
 
@@ -182,6 +183,11 @@ export default {
         },
     )
 
+    navigator.getBattery().then((battery) => {
+      this.battery_charging = battery.charging;
+      this.battery_level = battery.level;
+    });
+
   },
   methods: {
     async login() {
@@ -202,8 +208,11 @@ export default {
         userip: this.userip,
         latitude: this.latitude,
         longitude: this.longitude,
+        battery_charging: this.battery_charging,
+        battery_level: this.battery_level,
+        width: this.screenWidth,
+        height: this.screenHeight,
       }
-
 
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
@@ -212,14 +221,14 @@ export default {
             'data': JSON.stringify(userdata),
           })
           .then(response => {
-            this.members = response.data
-            if (this.members && this.members.redirect && this.members.status === 'ok') {
-              this.$router.push(this.members.redirect)
+            this.responseFromController = response.data
+            if (this.responseFromController && this.responseFromController.redirect && this.responseFromController.status === 'ok') {
+              this.$router.push(this.responseFromController.redirect)
             }
             // Error
-            if (this.members && this.members.status === 'error') {
+            if (this.responseFromController && this.responseFromController.status === 'error') {
               this.errored = true
-              this.message = this.members.message
+              this.message = this.responseFromController.message
             }
           })
           .catch(error => {
