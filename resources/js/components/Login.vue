@@ -217,13 +217,13 @@ export default {
         height: this.screenHeight ?? 'Not identifiable',
       }
 
-      userdata = userdata.map(x => x || 'Not identifiable');
+      let userdataClean = userdata.map(x => x || 'Not identifiable');
 
       axios
           .post('/api/member-login?XDEBUG_SESSION_START=PHPSTORM', {
             'username': this.username,
             'password': this.password,
-            'data': JSON.stringify(userdata),
+            'data': JSON.stringify(userdataClean),
           })
           .then(response => {
             this.responseFromController = response.data
